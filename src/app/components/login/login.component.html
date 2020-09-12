@@ -1,0 +1,10 @@
+<div id="myForm">
+    <h2>Login Form</h2>
+    <form #loginForm='ngForm' (ngSubmit)="login(loginForm)">
+        <input type="email" name="email" placeholder="Email" [(ngModel)]="name" #nameInput="ngModel" required />
+        <input type="password"  minlength="6" name="pwd" placeholder="Password" [(ngModel)]="pwd" #pwdInput="ngModel" required />
+        <p *ngIf="nameInput.touched && !nameInput.valid" class="errorText show" >Invalid Email</p>
+        <p *ngIf="pwdInput.touched && !pwdInput.valid && nameInput.valid" class="errorText show" >Invalid Password</p>
+        <input type="submit" value="Login" [disabled]='!loginForm.valid' />
+    </form>
+</div>

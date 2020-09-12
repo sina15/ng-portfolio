@@ -1,0 +1,79 @@
+@mixin container{
+    width:80%;
+    margin:auto;
+    text-align: center;
+}
+
+@mixin inputText {
+    width:30%;
+    margin: auto;
+    margin-top: 20px;
+    height: 30px;
+    border-radius: 5px; 
+    border: 1px solid gray;
+    text-align: center;
+
+    &.ng-touched.ng-invalid{
+        border: 1px solid red;
+    }
+}
+
+@mixin submitBtn {
+    width:30%;
+    height:40px;
+    color:white;
+    background-color: orange;
+    border: none;
+
+    &:hover{
+        opacity: 0.8;
+    }
+}
+
+@mixin formStyle {
+    display: flex;
+      flex-direction: column;
+      margin-top: 30px;
+
+      input{
+        @include inputText();
+
+        &:focus{
+            border: 1px solid gray; 
+            outline: none;
+          }
+      }
+
+      input[type=submit]{
+        @include submitBtn();
+
+        &:disabled{
+            background-color:gray
+        }
+      }
+
+      .errorText{
+        color:red;
+          &.show{
+              display: block;
+              margin:0;
+              margin-top:2px;
+              font-size: 12px;
+          }
+
+          &.hide{
+              display: none
+          }
+      }
+}
+
+#myForm{
+    @include container();
+   
+    form{
+      @include formStyle()
+    }
+}
+
+    
+

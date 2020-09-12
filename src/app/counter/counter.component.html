@@ -1,0 +1,19 @@
+<div>Counter: {{counter}}</div>
+<div id="btnContainer">
+    <button class="inc" (click)="increment()">Increment</button>
+    <button class="dec" (click)="decrement()">Decrement</button>
+</div>
+
+<div class="toggleContainer">
+    <div class="toggleText">
+        <div *ngIf="showText == true; then condition1; else condition2">Text to toggle</div>
+        <ng-template #condition1>
+            <div>shown</div>
+        </ng-template>
+
+        <ng-template #condition2>
+            <div>hidded</div>
+        </ng-template>
+    </div>
+    <button (click)="toggleText()"  class="toggleBtn">Toggle Text</button>
+</div>

@@ -1,0 +1,15 @@
+<div id="myForm">
+    <h2>Signup Form</h2>
+    <form [formGroup]="signUpForm" (ngSubmit) = "signUp()">
+        <input type='text'  name="name" placeholder="full name" formControlName="name" />
+        <input type="tel" name="phone" placeholder="phone" formControlName="phone" />
+        <input type='email' name="email" placeholder="email" formControlName="email" />
+        <div formGroupName="password">
+            <input pwd1Input type="password" name="pwd1" placeholder="password" (change)="validatePassword()" formControlName="pwd1" /><br/>
+            <input type='password' name="pwd2" placeholder="repeat password" (change)="validatePassword()" formControlName="pwd2" />
+        </div>
+        <p *ngIf="signUpForm.touched && !signUpForm.valid" class="errorText show" >Invalid Input</p>
+        <p *ngIf="signUpForm.controls.password.touched  && signUpForm.controls.password.valid && !matchPwd" class="errorText show" > Password don't match</p>
+        <input type="submit" value="Login" [disabled]="!signUpForm.valid"/>
+    </form>
+</div>
