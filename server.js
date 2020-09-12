@@ -1,6 +1,9 @@
-var express = require('express')
-var app = express();
-var cors = require('cors')
+const express = require('express');
+const path = require('path');
+const app = express();
 
-app.use(cors())
-app.listen(5000,()=>console.log("Server started"))
+app.use(express.static(__dirname + '/dist/ANGULARDEMO'));
+app.get('/*', function(req,res) {
+res.sendFile(path.join(__dirname+
+'/dist/ANGULARDEMO/index.html'));});
+app.listen(process.env.PORT || 8080);
