@@ -1,6 +1,7 @@
 @mixin nav-style-cont{
    display: flex;
    flex-direction: row;
+   flex-wrap: wrap;
    justify-content: space-around;
    list-style-type: none;
    font-size: 1.5em;
@@ -11,9 +12,14 @@
        justify-content: space-between;
        font-size: 1em;
    }
+
+   @media only screen and (max-width:425px) {
+    justify-content:space-around;
+    font-size: 0.6em;
+}
 }
 
-.navList{
+#navList{
     @include nav-style-cont();
 
     li{
@@ -29,3 +35,5 @@
         color: orage;
     }
 }
+
+@import url('../../assets/parallax.scss')
