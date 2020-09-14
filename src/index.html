@@ -6,13 +6,45 @@
   <base href="/">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <!-- <link rel="manifest" href="./manifest.webmanifest"> -->
+  <!-- <script src="./assets/ashs.js"></script> -->
   <style>
     body{
       margin:0!important
     }
   </style>
+  <script>
+    if('serviceWorker' in navigator){
+      window.addEventListener('load',()=>{
+        navigator.serviceWorker.register("./sw.js")
+        .then(reg=>{
+          console.log("Registered",reg);
+        })
+        .catch(err=>{
+          console.log("Registration failed ", err)
+        })
+      })
+    }else{
+      console.log("service worker not supported")
+    }
+    
+    if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(position=>{
+      let longitude = position.coords.longitude
+      let latitude = position.coords.latitude
+      window.localStorage.setItem("longitude",longitude)
+      window.localStorage.setItem("latitude",latitude)
+    });
+  }
+  </script>
+
+  
+  <link rel="manifest" href="manifest.webmanifest">
+  <meta name="theme-color" content="#1976d2">
+  <base href="/">
 </head>
 <body>
   <app-root></app-root>
+  <noscript>Please enable JavaScript to continue using this application.</noscript>
 </body>
 </html>

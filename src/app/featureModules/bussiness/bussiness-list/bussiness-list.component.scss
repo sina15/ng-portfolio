@@ -1,1 +1,25 @@
-@import '../../../assets/container.scss'
+@import '../../../assets/container.scss';
+
+.container{
+    &.businesses{
+        display: flex;
+        align-items: stretch;
+        height: 100%;
+        background-color: orange!important;
+        padding: 0;
+
+        .navbar-cont{
+            order: 1;
+            flex-grow: 2;
+            background-color: orchid;
+        }
+
+        .cont-list{
+            order:2;
+            flex-grow: 7;
+            background-color: greenyellow;
+        }
+
+    }
+
+}

@@ -1,6 +1,7 @@
 <div id="homeCont" class="parralax">
    <div id="SearchCont">
-       <input type="text" placeholder="Search for a thing restaurant,bar.."/>
-       <button>Search</button>
+       <input type="text" name="term"  placeholder="Search for a thing restaurant,bar.." [formControl]="searchInput"/>
+       <button *ngIf="searchInput.valid" (click)="makeSearch()" (keyup)="handleKeyUp()" > Search</button>
    </div>
 </div>
+ 

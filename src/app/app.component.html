@@ -1,3 +1,5 @@
-<app-header></app-header>
+<app-header (setAppText)="setAppName($event)"></app-header>
+{{title}}
+{{6|price:"rwf"}}
 <router-outlet></router-outlet>
 <app-footer></app-footer>

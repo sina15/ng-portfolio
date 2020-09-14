@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { Router } from '@angular/router';
 
 @Component({
@@ -15,6 +15,11 @@ export class HeaderComponent implements OnInit {
     {name:'LOGIN',url:'login'},
     {name:'SIGNUP',url:'signup'}
   ]
+
+  appName='IwacuFood'
+
+  @Output() setAppText = new EventEmitter<string>()
+
   constructor(private router:Router) { }
 
   ngOnInit(): void {
@@ -22,6 +27,7 @@ export class HeaderComponent implements OnInit {
 
   navigate(nav){
     this.router.navigate([`/${nav.url}`])
+    this.setAppText.emit(`${this.appName} -> ${nav.url}`);
   }
 
 }
