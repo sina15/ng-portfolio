@@ -22,11 +22,9 @@ export class HomeComponent implements OnInit  {
   }
 
   makeSearch(){
-
     this.searchService.homeSearch("/search",this.searchInput.value,{
       limit:20
     })
-
    
   }
 
