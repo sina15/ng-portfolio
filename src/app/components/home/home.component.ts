@@ -10,16 +10,11 @@ import { HomeSearchService } from 'src/app/services/home-search.service';
 })
 
 
-export class HomeComponent implements OnInit , OnChanges {
+export class HomeComponent implements OnInit  {
 
   searchInput = new FormControl("",[Validators.required,Validators.minLength(3)])
   resultSet
   constructor(private searchService: HomeSearchService) { }
- 
-  ngOnChanges(): void {
-    // throw new Error('Method not implemented.');
-    console.log(this.resultSet)
-  }
 
   ngOnInit(): void {
     //the observable makes sure that you alwayus have updated data
@@ -31,6 +26,8 @@ export class HomeComponent implements OnInit , OnChanges {
     this.searchService.homeSearch("/search",this.searchInput.value,{
       limit:20
     })
+
+   
   }
 
   handleKeyUp(e){

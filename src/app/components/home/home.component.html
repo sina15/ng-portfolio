@@ -3,5 +3,6 @@
        <input type="text" name="term"  placeholder="Search for a thing restaurant,bar.." [formControl]="searchInput"/>
        <button *ngIf="searchInput.valid" (click)="makeSearch()" (keyup)="handleKeyUp()" > Search</button>
    </div>
+   {{resultSet|json}}
 </div>
  

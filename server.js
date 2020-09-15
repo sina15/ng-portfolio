@@ -3,6 +3,18 @@ const path = require('path');
 const app = express();
 const yelp = require('yelp-fusion');
 const cors = require('cors')
+const fs = require('fs')
+
+var env =   process.env.NODE_ENV || 'dev'
+var apiKey = process.env.clientId || 'undefined';
+
+if(env=='dev'){
+    try {
+          apiKey = fs.readFileSync(path.join(__dirname, 'src/key.txt'),'utf8')       
+      } catch (err) {
+        console.error(err)
+      }
+}
 
 app.use(express.static(__dirname + '/dist/AngularDemo'));
 app.use(cors())
@@ -12,7 +24,6 @@ app.get("/search", (req, res) => {
 
     // Place holder for Yelp Fusion's API Key. Grab them
     // from https://www.yelp.com/developers/v3/manage_app
-    const apiKey = process.env.clientId;
 
     const searchRequest = {
         term: 'Four Barrel Coffee',
